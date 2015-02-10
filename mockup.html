@@ -1,0 +1,57 @@
+<html>
+<head>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse:collapse;
+}
+th, td {
+    padding: 5px;
+}
+</style>
+</head>
+<body>
+ 
+<script src="jquery.min.js"></script>
+<script type="text/javascript">
+
+//doc domain because reasons
+document.domain = document.domain;
+
+//doc ready
+$(document).ready(function(){
+	console.log("test");
+	//the variable to be appended here
+	$("#Autom").append("<ul></ul>");
+});
+$.ajax({
+			type: "GET",
+			url: "http://was-dstanfield:8181/MicroStrategy/certificateServerConfig.xml",
+			dataType: "xml",
+			success: function(xml) 
+			{
+			 
+			$(xml).find('pr').each(function()
+				{
+					//get the title of the pr node (the n value)
+					var Title = $(this).find('pr').attr('n');
+					//get the value of the pr node
+					var Value = $(this).find('pr').attr('v');
+					//shove the values into a quick list
+					$("<li></li>").html(Title + "-" + Value).appendTo("#Autom");
+				});
+			},
+			//generic error whee
+			error: function() {
+			alert("The XML File could not be processed correctly.");
+			}
+		});
+ 
+ 
+ 
+</script>
+ 
+<ul id="Autom"></ul>
+ 
+</body>
+</html>

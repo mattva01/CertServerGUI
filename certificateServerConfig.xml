@@ -1,0 +1,33 @@
+<certificate_server_config>
+  <!-- The provider class is the class which provides the routines for creating/revoking certificates and for authenticating users.  This
+	     will generally depend upon your platform of the MicroStrategy Mobile server and the certificate server.  It would also
+	     be the place to define the provider as a custom provider if you are doing any customizations, for example, integration with an
+	     external authentication or certificate provider.  The class specified here must be an implementation of the
+	     com.microstrategy.web.certificate.CertificateProvider interface. -->
+  <!-- IIS or non-tomcat certificate server provider by default.  It's also a pretty good base class for a customized certificate provider. -->
+  <provider class="com.microstrategy.web.certificate.DefaultCertificateProvider" />
+  <!-- Tomcat certificate provider.  Will perform operations to work well with Tomcat's CRL reload mechanism when revoking certificates. -->
+  <!-- <provider class="com.microstrategy.web.certificate.TomcatCertificateProvider"/> -->
+  <provider_properties>
+    <pr n="IntelligenceServer" v="localhost" desc="The Intelligence Server to use for authentication when creating a certificate" />
+    <pr n="IntelligenceServerPort" v="0" desc="Intelligence Server port - 0 means use the default port" />
+    <pr n="IntelligenceServerSSL" v="0" desc="Whether Intelligence Server is configured to use SSL: 1 - SSL enabled, 0 - SSL disabled (default)" />
+    <pr n="ProjectName" v="MicroStrategy Tutorial (for RW)" desc="The project to use for authentication" />
+    <pr n="AuthMode" v="1" desc="The Intelligence Server authentication mode" />
+    <pr n="CatalogLocation" v="/WEB-INF/xml/certificateData.xml" desc="The location to store lists of certificates and users registered" />
+    <pr n="SigningCertificateType" v="jks" desc="The certificate format, either jks or der" />
+    <pr n="JKSLocation" v="WEB-INF/cert-srv-client-auth.jks" desc="The JKS containing the signing certificate" />
+    <pr n="JKSAlias" v="clientauth" desc="The alias of the signing certificate in the key store" />
+    <pr n="JKSPassword" v="test123" desc="The password of the JKS keystore" />
+    <pr n="DERCertificateLocation" v="WEB-INF/pub.der" desc="The certificate to use for signing, in DER format" />
+    <pr n="DERPrivateKey" v="WEB-INF/prv.der" desc="The private key of the signing certificate, in DER format" />
+    <pr n="X509Country" v="US" desc="The country to use in the certificate's DN" />
+    <pr n="X509Organization" v="MicroStrategy" desc="The organization to use in the certificate's DN" />
+    <pr n="X509Location" v="Vienna" desc="The location to use in the certificate's DN" />
+    <pr n="CertificateExpirationInDays" v="365" />
+    <pr n="CRLFile" v="cert-srv.crl" desc="Name of the CRL file - it will be created at the top level of the application path" />
+    <pr n="CDPLocation" v="" desc="CRL Distribution Point URL is required by some application servers (e.g. IIS). If empty, no CDP will added to new certificates. We also recognize the %HOST% macro (case sensitive), which will be replaced by the Certificate Server's fully qualified host name, e.g. http://%HOST%:8080/CertificateServer/cert-srv.crl" />
+    <!-- Tomcat -->
+    <pr n="TomcatConnectorPattern" v="*:type=Connector,port=8443,*" desc="Pattern used to identify the connector defined in Tomcat's server.xml. If the default SSL port is changed in the server.xml file, it will need to be reflected here as well." />
+  </provider_properties>
+</certificate_server_config>
