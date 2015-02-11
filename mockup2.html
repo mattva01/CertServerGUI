@@ -9,6 +9,23 @@ th, td {
     padding: 5px;
 }
 </style>
+
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  
 </head>
 <body>
  
@@ -54,5 +71,30 @@ $.ajax({
  
 <ul id="Autom"></ul>
  
+
+ <div class="container">
+  <h2>Vertical (basic) form</h2>
+  <form role="form">
+    <div class="form-group">
+      <label for="iserver">Intelligence Server:</label>
+      <input type="text" class="form-control" id="iserver" placeholder="The Intelligence Server to use for authentication when creating a certificate">
+    </div>
+    <div class="form-group">
+      <label for="iport">Intelligence Server Port:</label>
+      <input type="number" class="form-control" id="iport" placeholder="Intelligence Server port - 0 means use the default port">
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox"> Remember me</label>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+
+<!-- should probably make sections ie iserver / cert type / cert info / etc -->
+
+<!-- use http://www.tutorialrepublic.com/codelab.php?topic=faq&file=jquery-show-hide-div-using-checkboxes for hiding and showing, change checkbox to radio -->
+ 
+ 
+ <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
